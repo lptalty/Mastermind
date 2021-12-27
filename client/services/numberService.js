@@ -5,7 +5,6 @@ class NumberService {
         try {
             console.log('entered into Number Service, trying to get the number')
             const result = await axios.get(url);
-            console.log('Here is the result: ', result.data)
             return result.data;
         } catch (error) {
             console.log('There was an error getting computer numbers from services/numberService: ', error);
