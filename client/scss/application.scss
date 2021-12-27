@@ -1,2 +1,16 @@
 @import 'variables';
 @import 'style';
+
+.main-container {
+    background-color: tomato;
+    flex-direction: column;
+}
+
+.guess-container {
+    background-color: turquoise;
+    display: flex;
+}
+
+.dropdown-container {
+    background-color: violet;
+}
