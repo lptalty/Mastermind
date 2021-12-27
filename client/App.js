@@ -2,8 +2,6 @@ import React, { component, useEffect, useState } from 'react';
 import NumberService from './services/numberService'
 import {DropdownButton, ButtonGroup, Dropdown} from 'react-bootstrap'
 import styles from './scss/application.scss';
-// import { createPopper } from '@popperjs/core';
-
 
 const App = () => {
   const [numberList, setNumberList] = useState([]);
