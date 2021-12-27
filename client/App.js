@@ -50,31 +50,64 @@ const App = () => {
                 >
                   <Dropdown.Item eventKey="0"
                    onClick={(e) => {
-                     //have to update the button 1 2 3 4 at index 0 1 2 3 to the selected number using hooks
-                    //how do we know which button we're clicking? 
-                    console.log('Index should be 3: ', index)
-                    console.log('value should be 0', e.target.innerText)
-                    console.log(guessList)
                     guessList[index] = e.target.innerText;
                     console.log(guessList)
                     setGuessList([...guessList]);
-
-                    //this works
-                    // setGuestList(['please']);   
                    }
                   }
                   >0</Dropdown.Item>
-
-
                   <Dropdown.Item eventKey="1"
-                  onClick={(e) => console.log(e)}
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }
                   >1</Dropdown.Item>
-                  <Dropdown.Item eventKey="2">2</Dropdown.Item>
-                  <Dropdown.Item eventKey="3">3</Dropdown.Item>
-                  <Dropdown.Item eventKey="4">4</Dropdown.Item>
-                  <Dropdown.Item eventKey="5">5</Dropdown.Item>
-                  <Dropdown.Item eventKey="6">6</Dropdown.Item>
-                  <Dropdown.Item eventKey="7">7</Dropdown.Item>
+                  <Dropdown.Item eventKey="2"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }
+                  >2</Dropdown.Item>
+                  <Dropdown.Item eventKey="3"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }
+                  >3</Dropdown.Item>
+                  <Dropdown.Item eventKey="4"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }>4</Dropdown.Item>
+                  <Dropdown.Item eventKey="5"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }>5</Dropdown.Item>
+                  <Dropdown.Item eventKey="6"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }>6</Dropdown.Item>
+                  <Dropdown.Item eventKey="7"
+                  onClick={(e) => {
+                    guessList[index] = e.target.innerText;
+                    console.log(guessList)
+                    setGuessList([...guessList]);
+                   }
+                  }>7</Dropdown.Item>
                 </DropdownButton>
               ),
             )}
