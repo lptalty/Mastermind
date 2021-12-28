@@ -21,6 +21,13 @@ const App = () => {
     //save final value within react state using hooks
     setNumberList(finalArr)
   }
+
+  //add function here to compare
+  const compareButton = (computerNumbers, userNumbers) => {
+    console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
+    const result = NumberService.compareNumbers(computerNumbers, userNumbers);
+    console.log('Result within App.js equals: ', result);
+  }
   
   return (
     <div className='main-container'>
@@ -32,12 +39,7 @@ const App = () => {
       >
         Click me
         </button>
-        <div>{numberList}</div>
-        <div>{numberList[0]}</div>
-        <div>{numberList[1]}</div>
-        <div>{numberList[2]}</div>
-        <div>{numberList[3]}</div>
-        
+        <div>{numberList}</div> 
         <div className='guess-container'>
             {guessList.map(
               (variant, index) => (
@@ -51,7 +53,6 @@ const App = () => {
                   <Dropdown.Item eventKey="0"
                    onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }
@@ -59,7 +60,6 @@ const App = () => {
                   <Dropdown.Item eventKey="1"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }
@@ -67,7 +67,6 @@ const App = () => {
                   <Dropdown.Item eventKey="2"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }
@@ -75,7 +74,6 @@ const App = () => {
                   <Dropdown.Item eventKey="3"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }
@@ -83,34 +81,37 @@ const App = () => {
                   <Dropdown.Item eventKey="4"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }>4</Dropdown.Item>
                   <Dropdown.Item eventKey="5"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }>5</Dropdown.Item>
                   <Dropdown.Item eventKey="6"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }>6</Dropdown.Item>
                   <Dropdown.Item eventKey="7"
                   onClick={(e) => {
                     guessList[index] = e.target.innerText;
-                    console.log(guessList)
                     setGuessList([...guessList]);
                    }
                   }>7</Dropdown.Item>
                 </DropdownButton>
               ),
             )}
+            <button
+            onClick={(e) => {
+              compareButton(numberList, guessList)
+              }
+            }
+            >
+              Submit Answer</button>
         </div>
     </div>
   );
