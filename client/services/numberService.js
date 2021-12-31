@@ -1,14 +1,12 @@
 import axios from 'axios'
 
 class NumberService {
-    static async getComputerNumbers(url) {
+    static async getComputerNumbers() {
         try {
-            console.log('entered into Number Service, trying to get the number')
-            const result = await axios.get(url);
+            const result = await axios.get('http://localhost:3000/api/computer');
             return result.data;
         } catch (error) {
-            console.log('There was an error getting computer numbers from services/numberService: ', error);
-            return error;
+            throw new Error(error);
         }
     }
 

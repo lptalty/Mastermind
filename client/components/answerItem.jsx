@@ -1,45 +1,37 @@
-import React, { component, useEffect, useState } from 'react';
-import NumberService from './services/numberService'
-import {DropdownButton, ButtonGroup, Dropdown} from 'react-bootstrap'
-import styles from './scss/application.scss';
-import { id } from 'postcss-selector-parser';
+import React from 'react';
+import NumberService from '../services/numberService'
+import {DropdownButton, ButtonGroup, Dropdown} from 'react-bootstrap';
 
-const App = () => {
-  const [numberList, setNumberList] = useState([]);
-  const [guessList, setGuessList] = useState(['First Guess', 'Second Guess', 'Third Guess', 'Fourth Guess'])
-
-  const onClickButton = async (url) => {
-    const result = await NumberService.getComputerNumbers(url);
-    const finalArr = [];
-    
-    //result is saved as a string with an empty item at each odd index
-    //therefore have to iterate through the string by even index numbers
-    for (let i = 0; i < result.length - 1; i+=2) {
-      finalArr.push(result[i])
-    }
-    
-    //save final value within react state using hooks
-    setNumberList(finalArr)
-  }
-
-  //add function here to compare
-  const compareButton = (computerNumbers, userNumbers) => {
-    console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
-    const result = NumberService.compareNumbers(computerNumbers, userNumbers);
-    console.log('Result within App.js equals: ', result);
-  }
+const AnswerItem = ({
+    numberList,
+    guessList,
+    setGuessList,
+    savedGuess,
+    setSavedGuess,
+    numGuess,
+    setNumGuess,
+    setDidWin
+}) => {
+    //individual items have to be put into answer item and then we can use map with answer list to upload our results
+//look at containerlist and container item within dockure as a reference if necessary 
+//add function here to compare
+const compareButton = (computerNumbers, userNumbers) => {
+    // console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
+    const finalArr = NumberService.compareNumbers(computerNumbers, userNumbers);
+    console.log('Result within App.js equals: ', finalArr);
+    let result = true;
   
-  return (
-    <div className='main-container'>
-      <div> Getting Random Numbers with API</div>
-      <button
-      onClick={(e) =>
-        onClickButton('http://localhost:3000/api/computer')
+    for (let i = 0; i < finalArr.length; i++) {
+      if (finalArr[i] !== 2) {
+        result = false;
       }
-      >
-        Click me
-        </button>
-        <div>{numberList}</div> 
+    }
+    console.log('didWin equals: ', result);
+    setDidWin(result)
+  }
+
+return (
+    <div>
         <div className='guess-container'>
             {guessList.map(
               (variant, index) => (
@@ -105,16 +97,23 @@ const App = () => {
                 </DropdownButton>
               ),
             )}
-            <button
+        </div>
+        
+         <button
             onClick={(e) => {
+              
               compareButton(numberList, guessList)
+              setSavedGuess(savedGuess => [...savedGuess, [...guessList]])
+              setNumGuess(numGuess + 1)
+              if (numGuess === 10) console.log('YOU LOSE')
+              
               }
             }
             >
               Submit Answer</button>
-        </div>
     </div>
-  );
+    
+    );
 };
 
-export default App;
+export default AnswerItem;
