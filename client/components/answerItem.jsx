@@ -10,25 +10,28 @@ const AnswerItem = ({
     setSavedGuess,
     numGuess,
     setNumGuess,
-    setDidWin
+    setDidWin,
+    setResult,
+    setDidLose
 }) => {
     //individual items have to be put into answer item and then we can use map with answer list to upload our results
 //look at containerlist and container item within dockure as a reference if necessary 
 //add function here to compare
-const compareButton = (computerNumbers, userNumbers) => {
-    // console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
-    const finalArr = NumberService.compareNumbers(computerNumbers, userNumbers);
-    console.log('Result within App.js equals: ', finalArr);
-    let result = true;
-  
-    for (let i = 0; i < finalArr.length; i++) {
-      if (finalArr[i] !== 2) {
-        result = false;
-      }
-    }
-    console.log('didWin equals: ', result);
-    setDidWin(result)
-  }
+// const compareButton = (computerNumbers, userNumbers) => {
+//     // console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
+//     const finalArr = NumberService.compareNumbers(computerNumbers, userNumbers);
+//     console.log('Result within App.js equals: ', finalArr);
+//     let result = true;
+
+//     for (let i = 0; i < finalArr.length; i++) {
+//       if (finalArr[i] !== 2) {
+//         result = false;
+//       }
+//     }
+//     console.log('didWin equals: ', result);
+//     setDidWin(result)
+//     setResult(result => [...result, [...finalArr]])
+//   }
 
 return (
     <div>
@@ -41,6 +44,7 @@ return (
                   key={index}
                   variant={variant.toLowerCase()}
                   title={variant}
+                  className='dropdown-btn'
                 >
                   <Dropdown.Item eventKey="0"
                    onClick={(e) => {
@@ -99,18 +103,22 @@ return (
             )}
         </div>
         
-         <button
+         {/* <button
+            className='submit-btn'
             onClick={(e) => {
-              
+
               compareButton(numberList, guessList)
               setSavedGuess(savedGuess => [...savedGuess, [...guessList]])
+              if (numGuess === 10){
+                setDidLose(true);
+                return;
+              } 
               setNumGuess(numGuess + 1)
-              if (numGuess === 10) console.log('YOU LOSE')
-              
               }
             }
             >
-              Submit Answer</button>
+              Submit Answer
+              </button> */}
     </div>
     
     );

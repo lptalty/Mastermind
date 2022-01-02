@@ -7,15 +7,25 @@ const AnswerList = ({
     setGuessList,
     numGuess,
     setNumGuess,
-    setDidWin
+    setDidWin,
+    setDidLose,
+    savedGuess,
+    result
 }) => {
 
-    const [savedGuess, setSavedGuess] = useState([]);
+    // const [savedGuess, setSavedGuess] = useState([]);
+    // const [result, setResult] = useState([])
 
     const answers = savedGuess.map((answer, ind) => {
-        
+        //need to include the guess result here so that the user can know how they did 
+        //this is what shows up on the page 
+
+        //also save the result at the same index within the return
         return (
-           <div key={ind}>{answer}</div>
+            <div className='response-container'>
+                <div key={ind} className='user-answer'>{answer}</div>
+                <div key={ind + 10} className='computer-response'>{result[ind]}</div>
+            </div>
         )
     })
 
@@ -26,11 +36,13 @@ const AnswerList = ({
                 numberList={numberList}
                 guessList={guessList}
                 setGuessList={setGuessList}
-                savedGuess={savedGuess}
-                setSavedGuess={setSavedGuess}
+                // savedGuess={savedGuess}
+                // setSavedGuess={setSavedGuess}
                 numGuess={numGuess}
                 setNumGuess={setNumGuess}
                 setDidWin={setDidWin}
+                // setResult={setResult}
+                setDidLose={setDidLose}
             />
         </div>
     )

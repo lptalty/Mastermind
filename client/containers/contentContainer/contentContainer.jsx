@@ -6,10 +6,14 @@ const ContentContainer = ({
     guessList,
     setGuessList,
     numGuess,
-    setNumGuess
+    setNumGuess,
+    didWin,
+    setDidWin,
+    didLose,
+    setDidLose,
+    savedGuess,
+    result
 }) => {
-    const [didWin, setDidWin] = useState(false);
-
     return (
         <div>
             <div>
@@ -21,10 +25,11 @@ const ContentContainer = ({
                 setNumGuess={setNumGuess}
                 didWin={didWin}
                 setDidWin={setDidWin}
+                didLose={didLose}
+                setDidLose={setDidLose}
+                savedGuess={savedGuess}
+                result={result}
             />
-            </div>
-            <div>
-            {didWin ? <div>YOU WON</div> : <div>still playing</div>}
             </div>
         </div>
 
