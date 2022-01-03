@@ -1,4 +1,4 @@
-import React, { component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NumberService from '../services/numberService';
 import MainContainer from './mainContainer.jsx';
 import { id } from 'postcss-selector-parser';
@@ -8,6 +8,7 @@ const StartContainer = () => {
   const [toggle, setToggle] = useState(true);
   const [error, setError] = useState(null);
 
+  //Sends API call to create the computers number 
   const onClickButton = async () => {
     try {
       const result = await NumberService.getComputerNumbers();
@@ -24,6 +25,7 @@ const StartContainer = () => {
 
     } catch (error) {
       console.log('catch within app.js', error)
+      //saves error within hook that is displayed on the screen for user
       setError(error);
     }
   }

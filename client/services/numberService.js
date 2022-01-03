@@ -11,7 +11,6 @@ class NumberService {
     }
 
     static compareNumbers(computerNumbers, userNumbers) {
-
         //each of these are arrays full of strings 
         //need to compare all values in order to know how many of the correct numbers were chosen 
         //need to know if they were also in the same index location
@@ -63,7 +62,7 @@ class NumberService {
                  userObj[currNum]--;
              } 
              //there was a bug where computerObj[currNum] would be <= 0 and the array was also less than length 4
-             //which would push a 0 to the final array erroneously. Had to add in the misses outside of the for loop to combat this
+             //which would push a 0 to the final array erroneously. Had to add in the misses outside of the for loop to fix this
          }
          //fill out the final array with 0's that don't match
          while (finalArr.length < 4) {

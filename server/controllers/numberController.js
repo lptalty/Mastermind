@@ -11,6 +11,7 @@ computer.getNums = async function (req, res, next) {
         return next();
     } catch (error) {
         console.log('There was an error getting numbers for the computer: ', error);
+        return next(error);
     }
 }
 

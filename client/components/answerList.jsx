@@ -2,35 +2,28 @@ import React, {useState} from 'react';
 import AnswerItem from './answerItem.jsx';
 
 const AnswerList = ({
-    numberList,
     guessList,
     setGuessList,
-    numGuess,
-    setNumGuess,
-    setDidWin,
-    setDidLose,
     savedGuess,
     result
 }) => {
 
-    // const [savedGuess, setSavedGuess] = useState([]);
-    // const [result, setResult] = useState([])
 
+    //This function saves the users guesses and the computers hints as divs that are mapped and displayed
     const answers = savedGuess.map((answer, ind) => {
-        //need to include the guess result here so that the user can know how they did 
-        //this is what shows up on the page 
-        console.log('answer equals: ', answer)
-
+        
         let answerStr = '';
         const resultArr = [];
+
+        //iterating through the users answer and creating space in between numbers for ease of visability
         for (let i = 0; i < answer.length; i++) {
             answerStr += '\xa0'.repeat(4) + answer[i] + '\xa0'.repeat(4)
         }
-
+        //iterating through the hint and savining within individual divs to save within a visual four square
         for (let j = 0; j < result[ind].length; j++) {
             resultArr.push( <div className='computer-result' key={j}>{result[ind][j]}</div>)
         }
-        //also save the result at the same index within the return
+
         return (
             <div className='response-list' key={ind}>
                 <div className='user-answer'>{answerStr}</div>
@@ -41,19 +34,10 @@ const AnswerList = ({
 
     return (
         <div>
-        {/* <ul>{answers}</ul> */}
         <div className='response-container'>{answers}</div>
         <AnswerItem
-                numberList={numberList}
                 guessList={guessList}
                 setGuessList={setGuessList}
-                // savedGuess={savedGuess}
-                // setSavedGuess={setSavedGuess}
-                numGuess={numGuess}
-                setNumGuess={setNumGuess}
-                setDidWin={setDidWin}
-                // setResult={setResult}
-                setDidLose={setDidLose}
             />
         </div>
     )
