@@ -115,6 +115,7 @@
     flex-direction: column;
     width: 45rem;
     border-radius: 10px;
+    padding: 2rem;
     // width: 100%;
 
     .guess-container {
@@ -143,7 +144,7 @@
 
         .submit-btn {
             font-size: large;
-            margin-top: 10rem;
+            // margin-top: 10rem; 
             border-radius: 10px;
             // padding: 10px 0 0 10px;
             // border: 500px;
@@ -171,29 +172,81 @@
     }
     
     .response-container {
+        height: 46rem;
+        width: 100%;
+        // background-color: tomato;
+        padding: 1.5rem;
+    }
+    .response-list {
         display: flex;
         flex-direction:row;
-        justify-content: center;
+        justify-content:space-evenly;
+        margin: 0.8rem;
+        
         .user-answer {
             display: flex;
-            border-style: solid;
-            flex-direction: row;
-            justify-content:space-around;
-            align-items: stretch;
-            // align-items:flex-start;
+            // flex-direction: column;
+            //checkout colors
+            border: 1px solid gray;
+            // flex-direction: row;
+            justify-content: center;
+            // text-align: inherit;
+            // text-align: justify;
+            align-items: center;
+            // align-items:stretch;
             // justify-content: center;
             // margin-right: auto;
-            width: 10rem;
+            font-size: large;
+            width: 20rem;
+            height: 3.5rem;
+            font-size: large;
+            background-color: #9bddff ;
+            // overflow-wrap: break-word;
+            white-space: normal;
+            // align-items: flex-start;
         }
         
         .computer-response {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             border-style: solid;
-            width: 2rem;
-            height: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            font-size: small;
+            // margin: 0.2rem;
             // width: 40px;
             // height: 60px;
             // flex-wrap: wrap;
         }
+
+        .computer-result {
+            font-weight: bold;
+            font-size: medium;
+            margin: 0 0.3rem;
+        }
+    }
+
+    .did-guess {
+        padding: 15px;
+
+    }
+    .did-win {
+        background-color: green;
+        // font-size: larger;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .did-lose {
+        background-color: red;
+        // font-size: larger;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+
     }
 }
 

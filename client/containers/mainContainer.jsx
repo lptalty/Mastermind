@@ -1,4 +1,4 @@
-import React, { component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NumberService from '../services/numberService'
 import ContentContainer from './contentContainer/contentContainer.jsx';
 import { id } from 'postcss-selector-parser';
@@ -7,8 +7,7 @@ const MainContainer = ({numberList, setNumberList}) => {
   // const [guessList, setGuessList] = useState(['First Guess', 'Second Guess', 'Third Guess', 'Fourth Guess']);
   const [guessList, setGuessList] = useState(['1','2','3','4']);
   const [numGuess, setNumGuess] = useState(1);
-  const [didWin, setDidWin] = useState(null);
-  const [didLose, setDidLose] = useState(null);
+  const [didWin, setDidWin] = useState(false);
   const [result, setResult] = useState([]);
   const [savedGuess, setSavedGuess] = useState([]);
 
@@ -16,26 +15,39 @@ const MainContainer = ({numberList, setNumberList}) => {
     // console.log('computer choices equal: ', computerNumbers, 'userNumbers choices equal: ', userNumbers)
     const finalArr = NumberService.compareNumbers(computerNumbers, userNumbers);
     console.log('Result within App.js equals: ', finalArr);
-    let result = true;
+    let final = true;
 
     for (let i = 0; i < finalArr.length; i++) {
       if (finalArr[i] !== 2) {
-        result = false;
+        final = false;
       }
     }
-    console.log('didWin equals: ', result);
-    setDidWin(result)
+    console.log('didWin equals: ', final);
+    setDidWin(final)
     setResult(result => [...result, [...finalArr]])
   }
-  
+
+  const submitHandler = () => {
+    if (numGuess <= 10 && didWin !== true) {
+      console.log('numGuess equals: ', numGuess)
+        compareButton(numberList, guessList)
+        setSavedGuess(savedGuess => [...savedGuess, [...guessList]])
+        setNumGuess(numGuess + 1)
+      }
+    }
+  const gameStatus = () => {
+    if (numGuess < 11 && !didWin) {
+      return <div className='did-guess'>Current number of guesses: {numGuess} out of 10</div>
+    } else if (numGuess <= 11 && didWin) {
+      return <div className='did-win'>YOU WIN</div>
+    } else if (numGuess === 11 && !didWin) {
+      return <div className='did-lose'>YOU LOSE</div>
+    }
+  }
   return (
     <div className='main-container'>
-        <div>Current number of guesses: {numGuess} out of 10</div>
         <div>{numberList}</div> 
-        <div>
-            {didWin && <div>YOU WON</div>}
-            {didLose && <div>YOU LOST</div>}
-        </div>
+        {gameStatus()}
         <ContentContainer
           numberList={numberList}
           guessList={guessList}
@@ -44,25 +56,13 @@ const MainContainer = ({numberList, setNumberList}) => {
           setNumGuess={setNumGuess}
           didWin={didWin}
           setDidWin={setDidWin}
-          didLose={didLose}
-          setDidLose={setDidLose}
           savedGuess={savedGuess}
           result={result}
         />
         <div className ='submitBtn-container'>
         <button
             className='submit-btn'
-            onClick={(e) => {
-
-              compareButton(numberList, guessList)
-              setSavedGuess(savedGuess => [...savedGuess, [...guessList]])
-              if (numGuess === 10){
-                setDidLose(true);
-                return;
-              } 
-              setNumGuess(numGuess + 1)
-              }
-            }
+            onClick={submitHandler}
             >
               Submit
               </button>

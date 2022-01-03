@@ -19,19 +19,30 @@ const AnswerList = ({
     const answers = savedGuess.map((answer, ind) => {
         //need to include the guess result here so that the user can know how they did 
         //this is what shows up on the page 
+        console.log('answer equals: ', answer)
 
+        let answerStr = '';
+        const resultArr = [];
+        for (let i = 0; i < answer.length; i++) {
+            answerStr += '\xa0'.repeat(4) + answer[i] + '\xa0'.repeat(4)
+        }
+
+        for (let j = 0; j < result[ind].length; j++) {
+            resultArr.push( <div className='computer-result' key={j}>{result[ind][j]}</div>)
+        }
         //also save the result at the same index within the return
         return (
-            <div className='response-container'>
-                <div key={ind} className='user-answer'>{answer}</div>
-                <div key={ind + 10} className='computer-response'>{result[ind]}</div>
+            <div className='response-list' key={ind}>
+                <div className='user-answer'>{answerStr}</div>
+                <div className='computer-response'>{resultArr}</div>
             </div>
         )
     })
 
     return (
         <div>
-        <ul>{answers}</ul>
+        {/* <ul>{answers}</ul> */}
+        <div className='response-container'>{answers}</div>
         <AnswerItem
                 numberList={numberList}
                 guessList={guessList}

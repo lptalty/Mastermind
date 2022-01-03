@@ -25,8 +25,6 @@ const ContentContainer = ({
                 setNumGuess={setNumGuess}
                 didWin={didWin}
                 setDidWin={setDidWin}
-                didLose={didLose}
-                setDidLose={setDidLose}
                 savedGuess={savedGuess}
                 result={result}
             />
