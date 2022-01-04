@@ -1,0 +1,209 @@
+@import 'style';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.background {
+    background-color: #f3f2ee;
+    height: 100vh;
+}
+
+.title {
+    display: flex;
+    padding-top: 1.5rem;
+    justify-content: center;
+    font-family: 'PT Sans', Courier, monospace;
+    color: #191919;
+    font-size: xxx-large;
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-button {
+    font-family: 'PT Sans';
+    font-size: large;
+    margin-top: 10rem;
+    border-radius: 10px;
+    width: 5.4rem;
+	height: 5.4rem;
+	margin:100px auto;
+    background-color: #0a66c2;
+    color: white;
+    border:2.5px inset;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: capitalize;
+	box-shadow: 5px 5px 18px #888888;
+    -webkit-animation: breathing 7s ease-out infinite normal;
+    animation: breathing 7s ease-out infinite normal;
+	
+@-webkit-keyframes breathing {
+    0% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  
+    25% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  
+    60% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  
+    100% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  
+  @keyframes breathing {
+    0% {
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  
+    25% {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+  
+    60% {
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  
+    100% {
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+}
+}
+
+.main-container {
+    display: flex;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 1rem;
+    font-family: 'PT Sans';
+    flex-direction: column;
+    width: 45rem;
+    border-radius: 10px;
+
+    .guess-container {
+        align-items:center;
+        display: flex;
+        justify-content: space-around;
+        width: 40rem;
+        .dropdown-btn {
+            border: 2px solid black;
+            border-radius: 5px;
+            margin: 5px;
+            width: 9.4rem;
+            height: 2.4rem;
+        }
+    }
+
+    .submitBtn-container {
+        justify-content: flex-end;
+        padding-top: 10px;
+        padding-bottom: 20px;
+
+        .submit-btn {
+            font-size: large;
+            border-radius: 10px;
+            width: 6.4rem;
+            height: 2.4rem;
+            background-color: #0a66c2;
+            color: white;
+            border:2.5px inset;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    
+        .submit-btn:active {
+            transform: translateY(2px);
+          }
+    }
+    
+    .response-container {
+        height: 46rem;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .response-list {
+        display: flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        margin: 0.8rem;
+        
+        .user-answer {
+            display: flex;
+            border: 1px solid gray;
+            justify-content: center;
+            align-items: center;
+            font-size: large;
+            width: 20rem;
+            height: 3.5rem;
+            font-size: large;
+            white-space: normal;
+        }
+        
+        .computer-response {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            border: 1px solid gray;
+            width: 3.5rem;
+            height: 3.5rem;
+            font-size: small;
+        }
+
+        .computer-result {
+            font-weight: bold;
+            font-size: medium;
+            margin: 0 0.3rem;
+        }
+    }
+
+    .did-guess {
+        padding: 15px;
+
+    }
+    .did-win {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .did-lose {
+        background-color: red;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+}
+
+
+
+
